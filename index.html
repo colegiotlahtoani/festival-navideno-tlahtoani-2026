@@ -1,220 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Festival Navideño Tlahtoani</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+SC:wght@500;600&family=Karla:wght@400;600;700&display=swap">
+
 <style>
-  /* Layout: tarjeta de invitación enmarcada en dorado sobre terciopelo morado. Esferas navideñas en los colores del colegio cuelgan del marco y se mecen despacio. */
-  :root {
-    --velvet: #2a0710;
-    --velvet-2: #5a0f1f;
-    --purple: #c8283f;
-    --purple-soft: #ff8a98;
-    --leaf: #5fae3b;
-    --leaf-deep: #1f5a24;
-    --gold: #f1d36a;
-    --gold-deep: #b98d2a;
-    --yellow: #f7e53a;
-    --cream: #fbf6e4;
-    --lilac: #f6d9d2;
-    --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
-    --font-sc: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
-    --font-body: "Karla", system-ui, -apple-system, "Segoe UI", sans-serif;
-    color-scheme: dark;
-  }
-  * { box-sizing: border-box; }
-  html, body { min-height: 100%; }
+:root {
+  --velvet: #2a0710;
+  --velvet-2: #5a0f1f;
+  --gold: #f1d36a;
+  --cream: #fbf6e4;
+  --lilac: #f6d9d2;
+  --leaf: #5fae3b;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sc: "Cormorant SC", Georgia, serif;
+  --font-body: "Karla", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(60rem 30rem at 50% -8rem, #9a2033 0%, transparent 70%),
+    linear-gradient(180deg, #2a0710 0%, #52101e 50%, #230510 100%);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  padding: 36px 16px 60px;
+}
+
+#snow {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* TARJETA PRINCIPAL */
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 58rem);
+  margin: auto;
+  padding: 118px 54px 64px;
+  text-align: center;
+  border: 1px solid rgba(241, 211, 106, .75);
+  box-shadow:
+    0 0 0 6px var(--velvet-2),
+    0 0 0 7px rgba(241, 211, 106, .35),
+    0 30px 80px rgba(20, 2, 8, .6);
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.05),
+    rgba(255,255,255,.01)
+  );
+}
+
+/* ESFERAS NAVIDEÑAS */
+
+.ornaments {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 60px;
+  pointer-events: none;
+}
+
+.orn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: 50% 0;
+  animation: sway 5.5s ease-in-out infinite alternate;
+}
+
+.orn:nth-child(2) { animation-delay: -1s; }
+.orn:nth-child(3) { animation-delay: -2.2s; }
+.orn:nth-child(4) { animation-delay: -3.4s; }
+.orn:nth-child(5) { animation-delay: -1.7s; }
+.orn:nth-child(6) { animation-delay: -4s; }
+.orn:nth-child(7) { animation-delay: -2.8s; }
+
+.orn .string {
+  width: 1px;
+  height: var(--len);
+  background: rgba(241, 211, 106, .8);
+}
+
+.orn .cap {
+  width: 9px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.orn .ball {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-top: -1px;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.85) 0 7%, transparent 8%),
+    radial-gradient(circle at 40% 35%, var(--b) 0%, var(--b2) 100%);
+  box-shadow:
+    0 6px 14px rgba(20,2,8,.5),
+    inset 0 -3px 6px rgba(0,0,0,.18);
+}
+
+@keyframes sway {
+  from { transform: rotate(-4deg); }
+  to { transform: rotate(4deg); }
+}
+
+/* LOGO */
+
+.badge {
+  width: 230px;
+  height: 230px;
+  margin: 0 auto 34px;
+  background: var(--cream);
+  border-radius: 36px;
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 0 0 3px var(--gold),
+    0 0 0 8px rgba(241,211,106,.22),
+    0 0 60px rgba(226,60,80,.5);
+}
+
+.badge img {
+  width: 198px;
+  height: 198px;
+  display: block;
+  object-fit: contain;
+}
+
+/* TÍTULOS */
+
+.kicker {
+  font-family: var(--font-sc);
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: .34em;
+  color: var(--gold);
+  margin: 0 0 14px;
+  padding-left: .34em;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(3.5rem, 8vw, 6.2rem);
+  line-height: 1.04;
+  margin: 0;
+  color: var(--cream);
+  text-wrap: balance;
+}
+
+h1 em {
+  font-style: italic;
+  font-weight: 600;
+  background: linear-gradient(
+    180deg,
+    #fff3b8 0%,
+    #f1d36a 55%,
+    #c79a30 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lead {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.65rem, 3vw, 2rem);
+  line-height: 1.4;
+  color: var(--lilac);
+  max-width: 42rem;
+  margin: 24px auto 0;
+  text-wrap: balance;
+}
+
+/* IMAGEN DE CHRISTMAS CAROL */
+
+.scene {
+  margin: 38px auto 0;
+  max-width: 620px;
+}
+
+.scene img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(20,2,8,.55);
+}
+
+/* DECORACIÓN */
+
+.sprig {
+  display: block;
+  width: 300px;
+  height: 34px;
+  max-width: 100%;
+  margin: 34px auto 0;
+  fill: var(--leaf);
+}
+
+/* SEPARADORES */
+
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 48px 0 28px;
+}
+
+.rule::before,
+.rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+}
+
+.rule::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(241,211,106,.8)
+  );
+}
+
+.rule::after {
+  background: linear-gradient(
+    90deg,
+    rgba(241,211,106,.8),
+    transparent
+  );
+}
+
+.rule span {
+  font-family: var(--font-sc);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: .34em;
+  color: var(--gold);
+}
+
+/* FECHA */
+
+.spark {
+  width: 38px;
+  height: 38px;
+  display: block;
+  margin: 0 auto 10px;
+  fill: var(--gold);
+  filter: drop-shadow(0 0 10px rgba(241,211,106,.7));
+}
+
+.date-day {
+  font-family: var(--font-sc);
+  font-weight: 600;
+  font-size: 1.45rem;
+  letter-spacing: .3em;
+  color: var(--gold);
+  margin: 0;
+}
+
+.date-main {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(3.5rem, 8vw, 5.6rem);
+  line-height: 1.02;
+  margin: 4px 0 0;
+  color: var(--cream);
+}
+
+.date-year {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.8rem;
+  color: var(--lilac);
+  margin: 0;
+}
+
+.countdown {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 10px 24px;
+  border: 1px solid rgba(241,211,106,.6);
+  border-radius: 999px;
+  font-size: 1.1rem;
+  color: var(--lilac);
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown strong {
+  color: var(--gold);
+}
+
+/* HORARIOS */
+
+.times {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.times li {
+  border-radius: 14px;
+  padding: 28px 18px 34px;
+  border: 1px solid rgba(241,211,106,.55);
+}
+
+.times .kinder {
+  background: linear-gradient(165deg, #cf2c44, #78101f);
+}
+
+.times .primaria {
+  background: linear-gradient(165deg, #347a26, #153d17);
+}
+
+.times .spark {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 8px;
+}
+
+.times .level {
+  font-family: var(--font-sc);
+  font-weight: 600;
+  letter-spacing: .25em;
+  font-size: 1.15rem;
+  color: var(--cream);
+  margin: 0 0 6px;
+}
+
+.times .hour {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  line-height: 1;
+  margin: 0;
+  color: var(--cream);
+  white-space: nowrap;
+}
+
+.times .hour small {
+  display: block;
+  font-family: var(--font-sc);
+  font-size: .42em;
+  color: var(--gold);
+  letter-spacing: .16em;
+  margin-top: 10px;
+}
+
+/* UBICACIÓN */
+
+.venue-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 6vw, 3.5rem);
+  line-height: 1.1;
+  margin: 0 0 4px;
+  color: var(--cream);
+}
+
+.venue-note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.65rem;
+  color: var(--lilac);
+  margin: 0 0 30px;
+}
+
+/* BOTONES */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+}
+
+.btn {
+  appearance: none;
+  font: 700 1.15rem/1 var(--font-body);
+  letter-spacing: .03em;
+  padding: 19px 30px;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14rem;
+  min-height: 60px;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #f8e28a, #e6bf4c);
+  color: #2a1a05;
+  border: 1px solid #e6bf4c;
+  box-shadow: 0 6px 24px rgba(241,211,106,.25);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(180deg, #fff0a8, #efc95a);
+}
+
+.btn-quiet {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(241,211,106,.7);
+}
+
+.btn-quiet:hover {
+  background: rgba(241,211,106,.12);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 3px;
+}
+
+.copied {
+  min-height: 1.4em;
+  margin: 16px 0 0;
+  font-size: 1.05rem;
+  color: var(--gold);
+}
+
+/* MENSAJE FINAL */
+
+.closing {
+  margin: 8px auto 0;
+  max-width: 36rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 2.1rem;
+  line-height: 1.3;
+  color: var(--cream);
+}
+
+.sign {
+  margin: 18px 0 0;
+  font-family: var(--font-sc);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: .3em;
+  color: var(--gold);
+}
+
+/* RESPONSIVE PARA CELULARES */
+
+@media (max-width: 600px) {
   body {
-    background: radial-gradient(60rem 30rem at 50% -8rem, #9a2033 0%, rgba(154, 32, 51, 0) 70%), linear-gradient(180deg, #2a0710 0%, #52101e 50%, #230510 100%);
-    background-color: var(--velvet);
-    color: var(--cream);
-    font-family: var(--font-body);
-    font-size: 17px;
-    line-height: 1.55;
-    overflow-x: hidden;
-    padding-block: 28px 48px;
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    font-size: 18px;
+    padding: 18px 12px 34px;
   }
-  #snow { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 
-  /* Marco */
   .card {
-    position: relative; z-index: 1;
-    max-width: 36rem; margin-inline: auto;
-    padding: 96px 22px 44px;
-    text-align: center;
-    border: 1px solid rgba(241, 211, 106, .75);
-    box-shadow: 0 0 0 6px var(--velvet-2), 0 0 0 7px rgba(241, 211, 106, .35), 0 30px 80px rgba(20, 2, 8, .6);
-    background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .01));
+    width: 100%;
+    padding: 96px 18px 42px;
   }
 
-  /* Esferas */
   .ornaments {
-    position: absolute; top: -1px; left: 0; right: 0;
-    display: flex; justify-content: space-between; align-items: flex-start;
-    padding: 0 26px;
-    pointer-events: none;
+    padding: 0 18px;
   }
-  .orn {
-    display: flex; flex-direction: column; align-items: center;
-    transform-origin: 50% 0;
-    animation: sway 5.5s ease-in-out infinite alternate;
-  }
-  .orn:nth-child(2) { animation-delay: -1s; }
-  .orn:nth-child(3) { animation-delay: -2.2s; }
-  .orn:nth-child(4) { animation-delay: -3.4s; }
-  .orn:nth-child(5) { animation-delay: -1.7s; }
-  .orn:nth-child(6) { animation-delay: -4s; }
-  .orn:nth-child(7) { animation-delay: -2.8s; }
-  .orn .string { width: 1px; height: var(--len); background: rgba(241, 211, 106, .8); }
-  .orn .cap { width: 9px; height: 5px; background: var(--gold); border-radius: 1px 1px 2px 2px; }
+
   .orn .ball {
-    width: 28px; height: 28px; border-radius: 50%; margin-top: -1px;
-    background:
-      radial-gradient(circle at 32% 28%, rgba(255, 255, 255, .85) 0 7%, rgba(255, 255, 255, 0) 8%),
-      radial-gradient(circle at 40% 35%, var(--b) 0%, var(--b2) 100%);
-    box-shadow: 0 6px 14px rgba(20, 2, 8, .5), inset 0 -3px 6px rgba(0, 0, 0, .18);
+    width: 28px;
+    height: 28px;
   }
-  @keyframes sway { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
 
-  /* Logo */
   .badge {
-    width: 176px; height: 176px; margin: 0 auto 26px;
-    background: var(--cream);
-    border-radius: 30px;
-    display: grid; place-items: center;
-    box-shadow: 0 0 0 3px var(--gold), 0 0 0 8px rgba(241, 211, 106, .22), 0 0 60px rgba(226, 60, 80, .5);
+    width: 190px;
+    height: 190px;
+    margin-bottom: 28px;
   }
-  .badge img { width: 150px; height: 150px; display: block; }
 
-  .kicker { font-family: var(--font-sc); font-weight: 600; font-size: 1.05rem; letter-spacing: .36em; color: var(--gold); margin: 0 0 8px; padding-left: .36em; }
+  .badge img {
+    width: 164px;
+    height: 164px;
+  }
+
+  .kicker {
+    font-size: 1.05rem;
+    letter-spacing: .25em;
+  }
+
   h1 {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: clamp(2.7rem, 12vw, 4.5rem);
-    line-height: 1;
-    letter-spacing: -.01em;
-    margin: 0;
-    color: var(--cream);
-    text-wrap: balance;
+    font-size: clamp(3rem, 13vw, 4.5rem);
   }
-  h1 em {
-    font-style: italic; font-weight: 600;
-    color: var(--gold);
-    background: linear-gradient(180deg, #fff3b8 0%, #f1d36a 55%, #c79a30 100%);
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+
   .lead {
-    font-family: var(--font-display); font-style: italic; font-weight: 500;
-    font-size: 1.35rem; line-height: 1.4;
-    color: var(--lilac);
-    max-width: 27rem; margin: 18px auto 0;
-    text-wrap: balance;
+    font-size: 1.5rem;
+    line-height: 1.45;
   }
 
-  .sprig { display: block; width: 220px; height: 24px; max-width: 100%; margin: 26px auto 0; fill: var(--leaf); }
+  .scene {
+    max-width: 100%;
+    margin-top: 30px;
+  }
 
-  /* Rótulos */
-  .rule { display: flex; align-items: center; gap: 16px; margin: 38px 0 22px; }
-  .rule::before, .rule::after { content: ""; flex: 1; height: 1px; }
-  .rule::before { background: linear-gradient(90deg, rgba(241, 211, 106, 0), rgba(241, 211, 106, .8)); }
-  .rule::after { background: linear-gradient(90deg, rgba(241, 211, 106, .8), rgba(241, 211, 106, 0)); }
-  .rule span { font-family: var(--font-sc); font-weight: 600; font-size: .95rem; letter-spacing: .32em; color: var(--gold); padding-left: .32em; }
+  .sprig {
+    width: 240px;
+    height: 28px;
+  }
 
-  /* Fecha */
-  .spark { width: 30px; height: 30px; display: block; margin: 0 auto 6px; fill: var(--gold); filter: drop-shadow(0 0 10px rgba(241, 211, 106, .7)); }
-  .date-day { font-family: var(--font-sc); font-weight: 600; font-size: 1.15rem; letter-spacing: .3em; color: var(--gold); margin: 0; padding-left: .3em; }
-  .date-main { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.7rem, 12.5vw, 4.2rem); line-height: 1.02; margin: 4px 0 0; color: var(--cream); }
-  .date-year { font-family: var(--font-display); font-style: italic; font-size: 1.4rem; color: var(--lilac); margin: 0; }
+  .rule {
+    margin: 38px 0 22px;
+  }
+
+  .rule span {
+    font-size: 1.02rem;
+  }
+
+  .spark {
+    width: 32px;
+    height: 32px;
+  }
+
+  .date-day {
+    font-size: 1.2rem;
+  }
+
+  .date-main {
+    font-size: clamp(2.8rem, 12vw, 4rem);
+  }
+
+  .date-year {
+    font-size: 1.55rem;
+  }
+
   .countdown {
-    display: inline-block; margin-top: 16px; padding: 6px 18px;
-    border: 1px solid rgba(241, 211, 106, .6); border-radius: 999px;
-    font-size: .9rem; color: var(--lilac); font-variant-numeric: tabular-nums;
+    font-size: 1rem;
+    padding: 9px 18px;
   }
-  .countdown strong { color: var(--gold); font-weight: 700; }
 
-  /* Horarios */
-  .times { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
-  .times li { border-radius: 10px; padding: 18px 10px 22px; border: 1px solid rgba(241, 211, 106, .55); }
-  .times .kinder { background: linear-gradient(165deg, #cf2c44, #78101f); }
-  .times .primaria { background: linear-gradient(165deg, #347a26, #153d17); }
-  .times .spark { width: 18px; height: 18px; margin-bottom: 8px; }
-  .times .level { font-family: var(--font-sc); font-weight: 600; letter-spacing: .24em; font-size: .9rem; color: var(--cream); margin: 0 0 6px; padding-left: .24em; }
+  .times {
+    gap: 10px;
+  }
+
+  .times li {
+    padding: 22px 8px 26px;
+  }
+
+  .times .level {
+    font-size: .95rem;
+    letter-spacing: .14em;
+  }
+
   .times .hour {
-    font-family: var(--font-display); font-weight: 600;
-    font-size: clamp(2.1rem, 9.5vw, 3rem); line-height: 1; margin: 0;
-    color: var(--cream); font-variant-numeric: tabular-nums lining-nums; white-space: nowrap;
+    font-size: clamp(2.1rem, 9vw, 3rem);
   }
-  .times .hour small { display: block; font-family: var(--font-sc); font-size: .4em; color: var(--gold); letter-spacing: .16em; margin: 8px 0 0; }
 
-  /* Lugar */
-  .venue-name { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 8vw, 2.6rem); line-height: 1.1; margin: 0 0 4px; color: var(--cream); }
-  .venue-note { font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--lilac); margin: 0 0 24px; }
-  .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .venue-name {
+    font-size: clamp(2.2rem, 9vw, 2.9rem);
+  }
+
+  .venue-note {
+    font-size: 1.35rem;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
   .btn {
-    appearance: none; font: 700 .95rem/1 var(--font-body); letter-spacing: .03em;
-    padding: 14px 22px; border-radius: 999px; cursor: pointer; text-decoration: none;
-    display: inline-block; min-width: 11rem;
+    width: 100%;
+    min-width: 0;
+    min-height: 62px;
+    padding: 18px 20px;
+    font-size: 1.12rem;
   }
-  .btn-primary { background: linear-gradient(180deg, #f8e28a, #e6bf4c); color: #2a1a05; border: 1px solid #e6bf4c; box-shadow: 0 6px 24px rgba(241, 211, 106, .25); }
-  .btn-primary:hover { background: linear-gradient(180deg, #fff0a8, #efc95a); }
-  .btn-quiet { background: transparent; color: var(--cream); border: 1px solid rgba(241, 211, 106, .7); }
-  .btn-quiet:hover { background: rgba(241, 211, 106, .12); }
-  .btn:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
-  .copied { min-height: 1.4em; margin: 12px 0 0; font-size: .88rem; color: var(--gold); }
 
-  .closing { margin: 8px auto 0; max-width: 24rem; font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 1.6rem; line-height: 1.25; color: var(--cream); text-wrap: balance; }
-  .sign { margin: 14px 0 0; font-family: var(--font-sc); font-weight: 600; font-size: .95rem; letter-spacing: .3em; color: var(--gold); padding-left: .3em; }
+  .closing {
+    font-size: 1.75rem;
+  }
 
-  .scene { margin: 30px auto 0; max-width: 440px; }
-  .scene img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 28px rgba(20, 2, 8, .55); }
-  @media (min-width: 768px) { .scene { max-width: 520px; } }
+  .sign {
+    font-size: 1rem;
+    letter-spacing: .2em;
+  }
+}
 
-  @media (min-width: 768px) {
-    body { padding-block: 48px 72px; }
-    .card { max-width: 46rem; padding: 112px 56px 60px; }
-    .ornaments { padding: 0 60px; }
-    .orn .ball { width: 34px; height: 34px; }
-    .badge { width: 204px; height: 204px; border-radius: 36px; }
-    .badge img { width: 176px; height: 176px; }
-    h1 { font-size: 5.2rem; }
-    .lead { font-size: 1.55rem; max-width: 32rem; }
-    .sprig { width: 280px; height: 30px; }
-    .date-main { font-size: 5rem; }
-    .times { gap: 22px; }
-    .times li { padding: 26px 14px 30px; }
-    .times .hour { font-size: 3.8rem; }
-    .venue-name { font-size: 3rem; }
-    .closing { font-size: 1.9rem; max-width: 30rem; }
+@media (prefers-reduced-motion: reduce) {
+  .orn {
+    animation: none;
   }
-  @media (max-width: 360px) {
-    body { font-size: 16px; }
-    .badge { width: 156px; height: 156px; }
-    .badge img { width: 132px; height: 132px; }
-    .btn { min-width: 100%; }
-    .kicker { font-size: .95rem; letter-spacing: .22em; padding-left: .22em; }
-    .times .level { letter-spacing: .12em; padding-left: .12em; font-size: .82rem; }
-    .rule span { letter-spacing: .22em; padding-left: .22em; }
-    .sign { letter-spacing: .2em; padding-left: .2em; }
+
+  #snow {
+    display: none;
   }
-  @media (max-width: 420px) {
-    .card { padding-inline: 16px; }
-    .ornaments { padding: 0 18px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .orn { animation: none; }
-    #snow { display: none; }
-  }
+}
 </style>
+</head>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<body>
+
+<canvas id="snow" aria-hidden="true"></canvas>
+
+<!-- ICONOS -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="spark" viewBox="0 0 24 24"><path d="M12 1 14.6 9.4 23 12 14.6 14.6 12 23 9.4 14.6 1 12 9.4 9.4Z"/></symbol>
+    <symbol id="spark" viewBox="0 0 24 24">
+      <path d="M12 1 14.6 9.4 23 12 14.6 14.6 12 23 9.4 14.6 1 12 9.4 9.4Z"/>
+    </symbol>
+
     <symbol id="sprig" viewBox="0 0 220 24">
       <g>
-        <path d="M104 12H12" stroke="#5fae3b" stroke-width="1.2" fill="none"/><circle cx="95" cy="12" r="2.4" fill="#d6283f"/><circle cx="91" cy="10.2" r="2" fill="#d6283f"/><circle cx="91" cy="13.8" r="2" fill="#d6283f"/>
+        <path d="M104 12H12" stroke="#5fae3b" stroke-width="1.2" fill="none"/>
+        <circle cx="95" cy="12" r="2.4" fill="#d6283f"/>
+        <circle cx="91" cy="10.2" r="2" fill="#d6283f"/>
+        <circle cx="91" cy="13.8" r="2" fill="#d6283f"/>
         <path d="M0 0C4-5 12-5 18 0 12 5 4 5 0 0Z" transform="translate(98 12) rotate(205)"/>
         <path d="M0 0C4-5 12-5 18 0 12 5 4 5 0 0Z" transform="translate(82 12) rotate(155)"/>
         <path d="M0 0C4-5 12-5 18 0 12 5 4 5 0 0Z" transform="translate(64 12) rotate(205)"/>
@@ -222,8 +651,12 @@
         <path d="M0 0C4-5 12-5 18 0 12 5 4 5 0 0Z" transform="translate(30 12) rotate(205)"/>
         <path d="M0 0C4-5 12-5 18 0 12 5 4 5 0 0Z" transform="translate(16 12) rotate(155)"/>
       </g>
+
       <g transform="translate(220 0) scale(-1 1)">
-        <path d="M104 12H12" stroke="#5fae3b" stroke-width="1.2" fill="none"/><circle cx="95" cy="12" r="2.4" fill="#d6283f"/><circle cx="91" cy="10.2" r="2" fill="#d6283f"/><circle cx="91" cy="13.8" r="2" fill="#d6283f"/>
+        <path d="M104 12H12" stroke="#5fae3b" stroke-width="1.2" fill="none"/>
+        <circle cx="95" cy="12" r="2.4" fill="#d6283f"/>
+        <circle cx="91" cy="10.2" r="2" fill="#d6283f"/>
+        <circle cx="91" cy="13.8" r="2" fill="#d6283f"/>
         <path d="M0 0C4-5 12-5 18 0 12 5 4 5 0 0Z" transform="translate(98 12) rotate(205)"/>
         <path d="M0 0C4-5 12-5 18 0 12 5 4 5 0 0Z" transform="translate(82 12) rotate(155)"/>
         <path d="M0 0C4-5 12-5 18 0 12 5 4 5 0 0Z" transform="translate(64 12) rotate(205)"/>
@@ -231,151 +664,289 @@
         <path d="M0 0C4-5 12-5 18 0 12 5 4 5 0 0Z" transform="translate(30 12) rotate(205)"/>
         <path d="M0 0C4-5 12-5 18 0 12 5 4 5 0 0Z" transform="translate(16 12) rotate(155)"/>
       </g>
+
       <path d="M110 2 112.7 9.3 120 12 112.7 14.7 110 22 107.3 14.7 100 12 107.3 9.3Z" fill="#f1d36a"/>
     </symbol>
   </defs>
 </svg>
 
-<canvas id="snow" aria-hidden="true"></canvas>
-
 <main class="card">
+
+  <!-- ESFERAS -->
   <div class="ornaments" aria-hidden="true">
-    <div class="orn" style="--len:18px;--b:#ff8a98;--b2:#b3122b"><i class="string"></i><i class="cap"></i><i class="ball"></i></div>
-    <div class="orn" style="--len:40px;--b:#8fd35f;--b2:#2f6b1e"><i class="string"></i><i class="cap"></i><i class="ball"></i></div>
-    <div class="orn" style="--len:26px;--b:#f8e08a;--b2:#b58a1e"><i class="string"></i><i class="cap"></i><i class="ball"></i></div>
-    <div class="orn" style="--len:48px;--b:#ff7488;--b2:#8f0c20"><i class="string"></i><i class="cap"></i><i class="ball"></i></div>
-    <div class="orn" style="--len:26px;--b:#f8e08a;--b2:#b58a1e"><i class="string"></i><i class="cap"></i><i class="ball"></i></div>
-    <div class="orn" style="--len:40px;--b:#8fd35f;--b2:#2f6b1e"><i class="string"></i><i class="cap"></i><i class="ball"></i></div>
-    <div class="orn" style="--len:18px;--b:#ff8a98;--b2:#b3122b"><i class="string"></i><i class="cap"></i><i class="ball"></i></div>
+    <div class="orn" style="--len:18px;--b:#ff8a98;--b2:#b3122b">
+      <i class="string"></i><i class="cap"></i><i class="ball"></i>
+    </div>
+    <div class="orn" style="--len:40px;--b:#8fd35f;--b2:#2f6b1e">
+      <i class="string"></i><i class="cap"></i><i class="ball"></i>
+    </div>
+    <div class="orn" style="--len:26px;--b:#f8e08a;--b2:#b58a1e">
+      <i class="string"></i><i class="cap"></i><i class="ball"></i>
+    </div>
+    <div class="orn" style="--len:48px;--b:#ff7488;--b2:#8f0c20">
+      <i class="string"></i><i class="cap"></i><i class="ball"></i>
+    </div>
+    <div class="orn" style="--len:26px;--b:#f8e08a;--b2:#b58a1e">
+      <i class="string"></i><i class="cap"></i><i class="ball"></i>
+    </div>
+    <div class="orn" style="--len:40px;--b:#8fd35f;--b2:#2f6b1e">
+      <i class="string"></i><i class="cap"></i><i class="ball"></i>
+    </div>
+    <div class="orn" style="--len:18px;--b:#ff8a98;--b2:#b3122b">
+      <i class="string"></i><i class="cap"></i><i class="ball"></i>
+    </div>
   </div>
 
-  <div class="badge"><img src="logo-tlahtoani.png" alt="Logo del Centro de Educación Infantil Tlahtoani"></div>
+  <!-- LOGO -->
+  <div class="badge">
+    <img src="logo-tlahtoani.png" alt="Logo del Colegio Tlahtoani">
+  </div>
 
+  <!-- ENCABEZADO -->
   <p class="kicker">FESTIVAL NAVIDEÑO</p>
+
   <h1>Los fantasmas de <em>Scrooge</em></h1>
-  <p class="lead">Los alumnos de kinder y primaria presentan su función navideña.</p>
+
+  <p class="lead">
+    Los alumnos de kinder y primaria presentan su función navideña.
+  </p>
+
+  <!-- IMAGEN -->
   <figure class="scene">
-    <img class="scrooge-poster" src="christmas-carol.jpg" alt="Póster de la película Cuento de Navidad de Disney, con Ebenezer Scrooge sosteniendo una vela en una calle nevada." loading="eager" decoding="async">
+    <img
+      src="christmas-carol.jpg"
+      alt="Póster de A Christmas Carol"
+      loading="eager"
+      decoding="async"
+    >
   </figure>
 
-  <svg class="sprig" viewBox="0 0 220 24" aria-hidden="true"><use href="#sprig" width="220" height="24"/></svg>
+  <svg class="sprig" viewBox="0 0 220 24" aria-hidden="true">
+    <use href="#sprig" width="220" height="24"/>
+  </svg>
 
-  <div class="rule"><span>FECHA</span></div>
+  <!-- FECHA -->
+  <div class="rule">
+    <span>FECHA</span>
+  </div>
+
   <section>
-    <svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><use href="#spark" width="24" height="24"/></svg>
+    <svg class="spark" viewBox="0 0 24 24" aria-hidden="true">
+      <use href="#spark" width="24" height="24"/>
+    </svg>
+
     <p class="date-day">JUEVES</p>
     <p class="date-main">3 de diciembre</p>
     <p class="date-year">2026</p>
+
     <div id="countdown" class="countdown" hidden></div>
   </section>
 
-  <div class="rule"><span>HORARIOS</span></div>
+  <!-- HORARIOS -->
+  <div class="rule">
+    <span>HORARIOS</span>
+  </div>
+
   <ul class="times">
     <li class="kinder">
-      <svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><use href="#spark" width="24" height="24"/></svg>
+      <svg class="spark" viewBox="0 0 24 24" aria-hidden="true">
+        <use href="#spark" width="24" height="24"/>
+      </svg>
       <p class="level">KINDER</p>
       <p class="hour">11:20<small>A.M.</small></p>
     </li>
+
     <li class="primaria">
-      <svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><use href="#spark" width="24" height="24"/></svg>
+      <svg class="spark" viewBox="0 0 24 24" aria-hidden="true">
+        <use href="#spark" width="24" height="24"/>
+      </svg>
       <p class="level">PRIMARIA</p>
       <p class="hour">1:00<small>P.M.</small></p>
     </li>
   </ul>
 
-  <div class="rule"><span>LUGAR</span></div>
+  <!-- LUGAR -->
+  <div class="rule">
+    <span>LUGAR</span>
+  </div>
+
   <section>
     <h2 class="venue-name">Auditorio del Ángel</h2>
     <p class="venue-note">Guadalajara, Jalisco</p>
+
     <div class="actions">
-      <a class="btn btn-primary" href="https://share.google/zjDrYR8k5p5Pr2evS" target="_blank" rel="noopener">Ver ubicación</a>
-      <button class="btn btn-quiet" id="copy" type="button">Copiar datos</button>
+      <a
+        class="btn btn-primary"
+        href="https://share.google/zjDrYR8k5p5Pr2evS"
+        target="_blank"
+        rel="noopener"
+      >
+        Ver ubicación
+      </a>
+
+      <button class="btn btn-quiet" id="copy" type="button">
+        Copiar datos
+      </button>
     </div>
+
     <p class="copied" id="copied" role="status" aria-live="polite"></p>
   </section>
 
-  <svg class="sprig" viewBox="0 0 220 24" aria-hidden="true" style="margin-top:34px"><use href="#sprig" width="220" height="24"/></svg>
-  <p class="closing">Los esperamos para empezar juntos la Navidad.</p>
+  <!-- MENSAJE FINAL -->
+  <svg class="sprig" viewBox="0 0 220 24" aria-hidden="true" style="margin-top:34px">
+    <use href="#sprig" width="220" height="24"/>
+  </svg>
+
+  <p class="closing">
+    Los esperamos para empezar juntos la Navidad.
+  </p>
+
   <p class="sign">COLEGIO TLAHTOANI GDL</p>
+
 </main>
 
 <script>
-  (function () {
-    // Cuenta regresiva hasta el 3 de diciembre de 2026 (hora local del visitante)
-    var el = document.getElementById("countdown");
-    var target = new Date(2026, 11, 3);
-    var now = new Date();
-    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    var days = Math.round((target - today) / 86400000);
-    if (days > 1) { el.innerHTML = "Faltan <strong>" + days + "</strong> días"; el.hidden = false; }
-    else if (days === 1) { el.innerHTML = "<strong>Mañana</strong> es el festival"; el.hidden = false; }
-    else if (days === 0) { el.innerHTML = "<strong>Hoy</strong> es el festival"; el.hidden = false; }
+(function () {
 
-    // Copiar datos para compartir por mensaje
-    var text = [
-      "Festival Navideño · Colegio Tlahtoani",
-      "Los fantasmas de Scrooge",
-      "",
-      "Jueves 3 de diciembre de 2026",
-      "Auditorio del Ángel",
-      "Kinder: 11:20 a.m.",
-      "Primaria: 1:00 p.m.",
-      "",
-      "Ubicación: https://share.google/zjDrYR8k5p5Pr2evS"
-    ].join("\n");
-    var btn = document.getElementById("copy");
-    var msg = document.getElementById("copied");
-    function done(ok) {
-      msg.textContent = ok ? "Datos copiados" : "No se pudo copiar. Mantén presionado el texto para seleccionarlo.";
-      setTimeout(function () { msg.textContent = ""; }, 3000);
+  // CUENTA REGRESIVA
+  var el = document.getElementById("countdown");
+  var target = new Date(2026, 11, 3);
+  var now = new Date();
+  var today = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+
+  var days = Math.round((target - today) / 86400000);
+
+  if (days > 1) {
+    el.innerHTML = "Faltan <strong>" + days + "</strong> días";
+    el.hidden = false;
+  } else if (days === 1) {
+    el.innerHTML = "<strong>Mañana</strong> es el festival";
+    el.hidden = false;
+  } else if (days === 0) {
+    el.innerHTML = "<strong>Hoy</strong> es el festival";
+    el.hidden = false;
+  }
+
+  // COPIAR DATOS
+  var text = [
+    "Festival Navideño · Colegio Tlahtoani",
+    "Los fantasmas de Scrooge",
+    "",
+    "Jueves 3 de diciembre de 2026",
+    "Auditorio del Ángel",
+    "Kinder: 11:20 a.m.",
+    "Primaria: 1:00 p.m.",
+    "",
+    "Ubicación: https://share.google/zjDrYR8k5p5Pr2evS"
+  ].join("\n");
+
+  var btn = document.getElementById("copy");
+  var msg = document.getElementById("copied");
+
+  function done(ok) {
+    msg.textContent = ok
+      ? "Datos copiados"
+      : "No se pudo copiar. Mantén presionado el texto para seleccionarlo.";
+
+    setTimeout(function () {
+      msg.textContent = "";
+    }, 3000);
+  }
+
+  btn.addEventListener("click", function () {
+    try {
+      navigator.clipboard.writeText(text).then(
+        function () { done(true); },
+        function () { done(false); }
+      );
+    } catch (e) {
+      done(false);
     }
-    btn.addEventListener("click", function () {
-      try {
-        navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
-      } catch (e) { done(false); }
-    });
+  });
 
-    // Nieve suave con destellos dorados
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var cv = document.getElementById("snow");
-    if (!reduce && cv.getContext) {
-      var ctx = cv.getContext("2d");
-      var w = 0, h = 0, flakes = [], dpr = Math.min(window.devicePixelRatio || 1, 2);
-      var tints = ["rgba(255,255,255,", "rgba(255,255,255,", "rgba(255,255,255,", "rgba(241,211,106,"];
-      function resize() {
-        w = window.innerWidth; h = window.innerHeight;
-        cv.width = w * dpr; cv.height = h * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        var n = Math.max(26, Math.min(60, Math.round(w / 18)));
-        flakes = [];
-        for (var i = 0; i < n; i++) {
-          flakes.push({
-            x: Math.random() * w, y: Math.random() * h,
-            r: 0.8 + Math.random() * 1.9,
-            vy: 0.22 + Math.random() * 0.45,
-            ph: Math.random() * 6.28,
-            a: 0.3 + Math.random() * 0.5,
-            c: tints[Math.floor(Math.random() * tints.length)]
-          });
-        }
+  // ANIMACIÓN DE NIEVE
+  var reduce = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var cv = document.getElementById("snow");
+
+  if (!reduce && cv.getContext) {
+
+    var ctx = cv.getContext("2d");
+    var w = 0;
+    var h = 0;
+    var flakes = [];
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    var tints = [
+      "rgba(255,255,255,",
+      "rgba(255,255,255,",
+      "rgba(255,255,255,",
+      "rgba(241,211,106,"
+    ];
+
+    function resize() {
+      w = window.innerWidth;
+      h = window.innerHeight;
+
+      cv.width = w * dpr;
+      cv.height = h * dpr;
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      var n = Math.max(26, Math.min(60, Math.round(w / 18)));
+
+      flakes = [];
+
+      for (var i = 0; i < n; i++) {
+        flakes.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: 0.8 + Math.random() * 1.9,
+          vy: 0.22 + Math.random() * 0.45,
+          ph: Math.random() * 6.28,
+          a: 0.3 + Math.random() * 0.5,
+          c: tints[Math.floor(Math.random() * tints.length)]
+        });
       }
-      function tick(t) {
-        ctx.clearRect(0, 0, w, h);
-        for (var i = 0; i < flakes.length; i++) {
-          var f = flakes[i];
-          f.y += f.vy;
-          var x = f.x + Math.sin(t / 2000 + f.ph) * 12;
-          if (f.y > h + 4) { f.y = -4; f.x = Math.random() * w; }
-          ctx.beginPath();
-          ctx.arc(x, f.y, f.r, 0, 6.2832);
-          ctx.fillStyle = f.c + f.a + ")";
-          ctx.fill();
+    }
+
+    function tick(t) {
+      ctx.clearRect(0, 0, w, h);
+
+      for (var i = 0; i < flakes.length; i++) {
+        var f = flakes[i];
+
+        f.y += f.vy;
+
+        var x = f.x + Math.sin(t / 2000 + f.ph) * 12;
+
+        if (f.y > h + 4) {
+          f.y = -4;
+          f.x = Math.random() * w;
         }
-        requestAnimationFrame(tick);
+
+        ctx.beginPath();
+        ctx.arc(x, f.y, f.r, 0, 6.2832);
+        ctx.fillStyle = f.c + f.a + ")";
+        ctx.fill();
       }
-      resize();
-      window.addEventListener("resize", resize);
+
       requestAnimationFrame(tick);
     }
-  })();
+
+    resize();
+
+    window.addEventListener("resize", resize);
+    requestAnimationFrame(tick);
+  }
+
+})();
 </script>
+
+</body>
+</html>
