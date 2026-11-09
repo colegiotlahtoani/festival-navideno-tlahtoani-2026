@@ -22,13 +22,9 @@
   --font-body: "Karla", sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html, body {
-  min-height: 100%;
-}
+html, body { min-height: 100%; }
 
 body {
   margin: 0;
@@ -136,11 +132,11 @@ body {
 /* LOGO */
 
 .badge {
-  width: 230px;
-  height: 230px;
+  width: 190px;
+  height: 190px;
   margin: 0 auto 34px;
   background: var(--cream);
-  border-radius: 36px;
+  border-radius: 32px;
   display: grid;
   place-items: center;
   box-shadow:
@@ -150,8 +146,8 @@ body {
 }
 
 .badge img {
-  width: 198px;
-  height: 198px;
+  width: 164px;
+  height: 164px;
   display: block;
   object-fit: contain;
 }
@@ -204,7 +200,7 @@ h1 em {
   text-wrap: balance;
 }
 
-/* IMAGEN DE CHRISTMAS CAROL */
+/* IMAGEN */
 
 .scene {
   margin: 38px auto 0;
@@ -318,9 +314,7 @@ h1 em {
   font-variant-numeric: tabular-nums;
 }
 
-.countdown strong {
-  color: var(--gold);
-}
+.countdown strong { color: var(--gold); }
 
 /* HORARIOS */
 
@@ -479,7 +473,7 @@ h1 em {
   color: var(--gold);
 }
 
-/* RESPONSIVE PARA CELULARES */
+/* RESPONSIVE */
 
 @media (max-width: 600px) {
   body {
@@ -492,24 +486,23 @@ h1 em {
     padding: 96px 18px 42px;
   }
 
-  .ornaments {
-    padding: 0 18px;
-  }
+  .ornaments { padding: 0 18px; }
 
   .orn .ball {
     width: 28px;
     height: 28px;
   }
 
+  /* LOGO MÁS PEQUEÑO EN CELULAR */
   .badge {
-    width: 190px;
-    height: 190px;
+    width: 165px;
+    height: 165px;
     margin-bottom: 28px;
   }
 
   .badge img {
-    width: 164px;
-    height: 164px;
+    width: 140px;
+    height: 140px;
   }
 
   .kicker {
@@ -540,35 +533,27 @@ h1 em {
     margin: 38px 0 22px;
   }
 
-  .rule span {
-    font-size: 1.02rem;
-  }
+  .rule span { font-size: 1.02rem; }
 
   .spark {
     width: 32px;
     height: 32px;
   }
 
-  .date-day {
-    font-size: 1.2rem;
-  }
+  .date-day { font-size: 1.2rem; }
 
   .date-main {
     font-size: clamp(2.8rem, 12vw, 4rem);
   }
 
-  .date-year {
-    font-size: 1.55rem;
-  }
+  .date-year { font-size: 1.55rem; }
 
   .countdown {
     font-size: 1rem;
     padding: 9px 18px;
   }
 
-  .times {
-    gap: 10px;
-  }
+  .times { gap: 10px; }
 
   .times li {
     padding: 22px 8px 26px;
@@ -587,9 +572,7 @@ h1 em {
     font-size: clamp(2.2rem, 9vw, 2.9rem);
   }
 
-  .venue-note {
-    font-size: 1.35rem;
-  }
+  .venue-note { font-size: 1.35rem; }
 
   .actions {
     flex-direction: column;
@@ -605,9 +588,7 @@ h1 em {
     font-size: 1.12rem;
   }
 
-  .closing {
-    font-size: 1.75rem;
-  }
+  .closing { font-size: 1.75rem; }
 
   .sign {
     font-size: 1rem;
@@ -616,13 +597,8 @@ h1 em {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orn {
-    animation: none;
-  }
-
-  #snow {
-    display: none;
-  }
+  .orn { animation: none; }
+  #snow { display: none; }
 }
 </style>
 </head>
@@ -812,6 +788,7 @@ h1 em {
   var el = document.getElementById("countdown");
   var target = new Date(2026, 11, 3);
   var now = new Date();
+
   var today = new Date(
     now.getFullYear(),
     now.getMonth(),
