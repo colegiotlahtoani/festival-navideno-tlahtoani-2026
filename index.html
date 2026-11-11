@@ -9,19 +9,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+SC:wght@500;600&family=Karla:wght@400;600;700&display=swap">
 <style>
-  /* Layout: tarjeta de invitación enmarcada en dorado sobre terciopelo morado. Esferas navideñas en los colores del colegio cuelgan del marco y se mecen despacio. */
   :root {
     --velvet: #2a0710;
     --velvet-2: #5a0f1f;
-    --purple: #c8283f;
-    --purple-soft: #ff8a98;
-    --leaf: #5fae3b;
-    --leaf-deep: #1f5a24;
     --gold: #f1d36a;
     --gold-deep: #b98d2a;
-    --yellow: #f7e53a;
     --cream: #fbf6e4;
     --lilac: #f6d9d2;
+    --leaf: #5fae3b;
     --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
     --font-sc: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
     --font-body: "Karla", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -43,7 +38,6 @@
   }
   #snow { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 
-  /* Marco */
   .card {
     position: relative; z-index: 1;
     max-width: 36rem; margin-inline: auto;
@@ -54,7 +48,6 @@
     background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .01));
   }
 
-  /* Esferas */
   .ornaments {
     position: absolute; top: -1px; left: 0; right: 0;
     display: flex; justify-content: space-between; align-items: flex-start;
@@ -83,7 +76,6 @@
   }
   @keyframes sway { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
 
-  /* Logo */
   .badge {
     width: 176px; height: 176px; margin: 0 auto 26px;
     background: var(--cream);
@@ -91,7 +83,7 @@
     display: grid; place-items: center;
     box-shadow: 0 0 0 3px var(--gold), 0 0 0 8px rgba(241, 211, 106, .22), 0 0 60px rgba(226, 60, 80, .5);
   }
-  .badge img { width: 150px; height: 150px; display: block; }
+  .badge img { width: 150px; height: 150px; display: block; object-fit: contain; }
 
   .kicker { font-family: var(--font-sc); font-weight: 600; font-size: 1.05rem; letter-spacing: .36em; color: var(--gold); margin: 0 0 8px; padding-left: .36em; }
   h1 {
@@ -121,14 +113,12 @@
 
   .sprig { display: block; width: 220px; height: 24px; max-width: 100%; margin: 26px auto 0; fill: var(--leaf); }
 
-  /* Rótulos */
   .rule { display: flex; align-items: center; gap: 16px; margin: 38px 0 22px; }
   .rule::before, .rule::after { content: ""; flex: 1; height: 1px; }
   .rule::before { background: linear-gradient(90deg, rgba(241, 211, 106, 0), rgba(241, 211, 106, .8)); }
   .rule::after { background: linear-gradient(90deg, rgba(241, 211, 106, .8), rgba(241, 211, 106, 0)); }
   .rule span { font-family: var(--font-sc); font-weight: 600; font-size: .95rem; letter-spacing: .32em; color: var(--gold); padding-left: .32em; }
 
-  /* Fecha */
   .spark { width: 30px; height: 30px; display: block; margin: 0 auto 6px; fill: var(--gold); filter: drop-shadow(0 0 10px rgba(241, 211, 106, .7)); }
   .date-day { font-family: var(--font-sc); font-weight: 600; font-size: 1.15rem; letter-spacing: .3em; color: var(--gold); margin: 0; padding-left: .3em; }
   .date-main { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.7rem, 12.5vw, 4.2rem); line-height: 1.02; margin: 4px 0 0; color: var(--cream); }
@@ -140,7 +130,6 @@
   }
   .countdown strong { color: var(--gold); font-weight: 700; }
 
-  /* Aviso importante */
   .notice {
     margin: 0 0 16px; padding: 16px 16px 18px;
     border: 2px solid var(--gold); border-radius: 12px;
@@ -157,7 +146,6 @@
   .times .level { font-weight: 700; }
   @media (min-width: 768px) { .notice p { font-size: 1.8rem; } }
 
-  /* Horarios */
   .times { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
   .times li { border-radius: 10px; padding: 14px 10px 22px; border: 1px solid rgba(241, 211, 106, .55); }
   .times .kinder { background: linear-gradient(165deg, #cf2c44, #78101f); }
@@ -172,7 +160,6 @@
   }
   .times .hour small { display: block; font-family: var(--font-sc); font-size: .4em; color: var(--gold); letter-spacing: .16em; margin: 8px 0 0; }
 
-  /* Lugar */
   .venue-name { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 8vw, 2.6rem); line-height: 1.1; margin: 0 0 4px; color: var(--cream); }
   .venue-note { font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--lilac); margin: 0 0 24px; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
@@ -228,7 +215,6 @@
     .times .level { letter-spacing: .1em; padding-left: .1em; font-size: .84rem; min-height: 3.8em; }
     .ornaments { padding: 0 18px; }
   }
-  /* Grado y horario destacados */
   .times li .level {
     width: 100%; margin: 0 0 14px; padding: 10px 8px;
     background: linear-gradient(180deg, #f8e28a, #e6bf4c);
@@ -347,84 +333,129 @@
 </main>
 
 <script>
-  (function () {
-    // Cuenta regresiva hasta el 3 de diciembre de 2026 (hora local del visitante)
-    var el = document.getElementById("countdown");
-    var target = new Date(2026, 11, 3);
+(function () {
+  // ============================================================
+  // CUENTA REGRESIVA ROBUSTA
+  // Compara solo fechas (año, mes, día) a medianoche local,
+  // así el número baja exactamente un día cada día calendario
+  // y muestra "Hoy" el día del evento.
+  // ============================================================
+  var el = document.getElementById("countdown");
+
+  // Fecha del evento: 3 de diciembre de 2026 (mes 11 = diciembre)
+  var target = new Date(2026, 11, 3, 0, 0, 0, 0);
+
+  function renderCountdown() {
     var now = new Date();
-    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    var days = Math.round((target - today) / 86400000);
-    if (days > 1) { el.innerHTML = "Faltan <strong>" + days + "</strong> días"; el.hidden = false; }
-    else if (days === 1) { el.innerHTML = "<strong>Mañana</strong> es el festival"; el.hidden = false; }
-    else if (days === 0) { el.innerHTML = "<strong>Hoy</strong> es el festival"; el.hidden = false; }
+    // Normalizamos "hoy" a medianoche local
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
 
-    // Copiar datos para compartir por mensaje
-    var text = [
-      "Festival Navideño · Colegio Tlahtoani",
-      "Los fantasmas de Scrooge",
-      "",
-      "Jueves 3 de diciembre de 2026",
-      "Auditorio del Ángel",
-      "Kínder y 1° de primaria: 11:20 a.m.",
-      "Primaria de 2° a 6°: 1:00 p.m.",
-      "",
-      "Ubicación: https://share.google/zjDrYR8k5p5Pr2evS"
-    ].join("\n");
-    var btn = document.getElementById("copy");
-    var msg = document.getElementById("copied");
-    function done(ok) {
-      msg.textContent = ok ? "Datos copiados" : "No se pudo copiar. Mantén presionado el texto para seleccionarlo.";
-      setTimeout(function () { msg.textContent = ""; }, 3000);
+    // Diferencia en milisegundos entre dos medianoches locales
+    var diffMs = target.getTime() - today.getTime();
+
+    // Convertimos a días completos. Math.round evita errores
+    // por cambios de horario de verano (DST) que alteran ±1h.
+    var days = Math.round(diffMs / 86400000);
+
+    if (days > 1) {
+      el.innerHTML = "Faltan <strong>" + days + "</strong> días";
+      el.hidden = false;
+    } else if (days === 1) {
+      el.innerHTML = "<strong>Mañana</strong> es el festival";
+      el.hidden = false;
+    } else if (days === 0) {
+      el.innerHTML = "<strong>Hoy</strong> es el día. ¡Los esperamos!";
+      el.hidden = false;
+    } else {
+      // El evento ya pasó
+      el.innerHTML = "¡Gracias por acompañarnos!";
+      el.hidden = false;
     }
-    btn.addEventListener("click", function () {
-      try {
-        navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
-      } catch (e) { done(false); }
-    });
+  }
 
-    // Nieve suave con destellos dorados
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var cv = document.getElementById("snow");
-    if (!reduce && cv.getContext) {
-      var ctx = cv.getContext("2d");
-      var w = 0, h = 0, flakes = [], dpr = Math.min(window.devicePixelRatio || 1, 2);
-      var tints = ["rgba(255,255,255,", "rgba(255,255,255,", "rgba(255,255,255,", "rgba(241,211,106,"];
-      function resize() {
-        w = window.innerWidth; h = window.innerHeight;
-        cv.width = w * dpr; cv.height = h * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        var n = Math.max(26, Math.min(60, Math.round(w / 18)));
-        flakes = [];
-        for (var i = 0; i < n; i++) {
-          flakes.push({
-            x: Math.random() * w, y: Math.random() * h,
-            r: 0.8 + Math.random() * 1.9,
-            vy: 0.22 + Math.random() * 0.45,
-            ph: Math.random() * 6.28,
-            a: 0.3 + Math.random() * 0.5,
-            c: tints[Math.floor(Math.random() * tints.length)]
-          });
-        }
+  renderCountdown();
+
+  // Recalcula al volver a la pestaña (por si el día cambió mientras
+  // el teléfono estuvo bloqueado o la app en segundo plano).
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) renderCountdown();
+  });
+
+  // Recalcula cada minuto por si el usuario deja la página abierta
+  // y cruza la medianoche sin recargar.
+  setInterval(renderCountdown, 60000);
+
+  // ============================================================
+  // COPIAR DATOS
+  // ============================================================
+  var text = [
+    "Festival Navideño · Colegio Tlahtoani",
+    "Los fantasmas de Scrooge",
+    "",
+    "Jueves 3 de diciembre de 2026",
+    "Auditorio del Ángel",
+    "Kínder y 1° de primaria: 11:20 a.m.",
+    "Primaria de 2° a 6°: 1:00 p.m.",
+    "",
+    "Ubicación: https://share.google/zjDrYR8k5p5Pr2evS"
+  ].join("\n");
+  var btn = document.getElementById("copy");
+  var msg = document.getElementById("copied");
+  function done(ok) {
+    msg.textContent = ok ? "Datos copiados" : "No se pudo copiar. Mantén presionado el texto para seleccionarlo.";
+    setTimeout(function () { msg.textContent = ""; }, 3000);
+  }
+  btn.addEventListener("click", function () {
+    try {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+    } catch (e) { done(false); }
+  });
+
+  // ============================================================
+  // NIEVE
+  // ============================================================
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var cv = document.getElementById("snow");
+  if (!reduce && cv.getContext) {
+    var ctx = cv.getContext("2d");
+    var w = 0, h = 0, flakes = [], dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var tints = ["rgba(255,255,255,", "rgba(255,255,255,", "rgba(255,255,255,", "rgba(241,211,106,"];
+    function resize() {
+      w = window.innerWidth; h = window.innerHeight;
+      cv.width = w * dpr; cv.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = Math.max(26, Math.min(60, Math.round(w / 18)));
+      flakes = [];
+      for (var i = 0; i < n; i++) {
+        flakes.push({
+          x: Math.random() * w, y: Math.random() * h,
+          r: 0.8 + Math.random() * 1.9,
+          vy: 0.22 + Math.random() * 0.45,
+          ph: Math.random() * 6.28,
+          a: 0.3 + Math.random() * 0.5,
+          c: tints[Math.floor(Math.random() * tints.length)]
+        });
       }
-      function tick(t) {
-        ctx.clearRect(0, 0, w, h);
-        for (var i = 0; i < flakes.length; i++) {
-          var f = flakes[i];
-          f.y += f.vy;
-          var x = f.x + Math.sin(t / 2000 + f.ph) * 12;
-          if (f.y > h + 4) { f.y = -4; f.x = Math.random() * w; }
-          ctx.beginPath();
-          ctx.arc(x, f.y, f.r, 0, 6.2832);
-          ctx.fillStyle = f.c + f.a + ")";
-          ctx.fill();
-        }
-        requestAnimationFrame(tick);
+    }
+    function tick(t) {
+      ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < flakes.length; i++) {
+        var f = flakes[i];
+        f.y += f.vy;
+        var x = f.x + Math.sin(t / 2000 + f.ph) * 12;
+        if (f.y > h + 4) { f.y = -4; f.x = Math.random() * w; }
+        ctx.beginPath();
+        ctx.arc(x, f.y, f.r, 0, 6.2832);
+        ctx.fillStyle = f.c + f.a + ")";
+        ctx.fill();
       }
-      resize();
-      window.addEventListener("resize", resize);
       requestAnimationFrame(tick);
     }
-  })();
+    resize();
+    window.addEventListener("resize", resize);
+    requestAnimationFrame(tick);
+  }
+})();
 </script>
 
 </body>
